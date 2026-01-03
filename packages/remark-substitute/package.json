@@ -47,7 +47,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/weavepage/remark-sub.git",
+    "url": "https://github.com/weavepage/remark-substitute.git",
     "directory": "packages/remark-substitute"
   }
 }
