@@ -1,4 +1,4 @@
-# remark-sub
+# remark-substitute
 
 A [remark](https://github.com/remarkjs/remark) plugin for inline substitution using `:sub[INITIAL]{REPLACEMENT}` syntax.
 
@@ -15,7 +15,7 @@ The syntax is explicit and unambiguous, integrating cleanly with Markdown parsin
 ## Install
 
 ```bash
-npm install remark-sub
+npm install remark-substitute
 ```
 
 ## Usage
@@ -23,12 +23,12 @@ npm install remark-sub
 ```javascript
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
-import remarkSub from 'remark-sub'
+import remarkSubstitute from 'remark-substitute'
 import remarkStringify from 'remark-stringify'
 
 const result = await unified()
   .use(remarkParse)
-  .use(remarkSub)
+  .use(remarkSubstitute)
   .use(remarkStringify)
   .process('The :sub[TL;DR]{full explanation here} summarizes the point.')
 ```
@@ -82,17 +82,17 @@ test:sub[x]{y}     <!-- Does NOT parse -->
 
 ## Use with remark-directive
 
-If you use both `remark-sub` and `remark-directive`, **the plugin registered last takes precedence** for `:sub[...]` syntax.
+If you use both `remark-substitute` and `remark-directive`, **the plugin registered last takes precedence** for `:sub[...]` syntax.
 
 ```javascript
 // Sub wins:
 unified()
   .use(remarkDirective)
-  .use(remarkSub)  // registered last
+  .use(remarkSubstitute)  // registered last
 
 // Directive wins:
 unified()
-  .use(remarkSub)
+  .use(remarkSubstitute)
   .use(remarkDirective)   // registered last
 ```
 

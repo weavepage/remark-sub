@@ -1,5 +1,5 @@
 {
-  "name": "remark-sub",
+  "name": "remark-substitute",
   "version": "1.0.0",
   "description": "Remark plugin for inline substitution syntax (:sub[...]{...})",
   "type": "module",
@@ -21,8 +21,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "mdast-util-sub": "^1.0.0",
-    "micromark-extension-sub": "^1.0.0"
+    "mdast-util-substitute": "^1.0.0",
+    "micromark-extension-substitute": "^1.0.0"
   },
   "peerDependencies": {
     "unified": ">=11"
@@ -48,6 +48,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/weavepage/remark-sub.git",
-    "directory": "packages/remark-sub"
+    "directory": "packages/remark-substitute"
   }
 }

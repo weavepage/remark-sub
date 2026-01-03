@@ -1,4 +1,4 @@
-# remark-sub
+# remark-substitute
 
 A remark plugin for inline substitution syntax using `:sub[INITIAL]{REPLACEMENT}`.
 
@@ -9,7 +9,7 @@ Inline substitution allows progressive disclosure of content — show a brief ve
 ## Install
 
 ```bash
-npm install remark-sub
+npm install remark-substitute
 ```
 
 ## Usage
@@ -17,12 +17,12 @@ npm install remark-sub
 ```javascript
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
-import remarkSub from 'remark-sub'
+import remarkSubstitute from 'remark-substitute'
 import remarkStringify from 'remark-stringify'
 
 const result = await unified()
   .use(remarkParse)
-  .use(remarkSub)
+  .use(remarkSubstitute)
   .use(remarkStringify)
   .process('The :sub[TL;DR]{full explanation here} summarizes the point.')
 ```
@@ -86,9 +86,9 @@ This monorepo contains:
 
 | Package | Purpose |
 |---------|---------|
-| `micromark-extension-sub` | Tokenizer |
-| `mdast-util-sub` | AST utilities |
-| `remark-sub` | Remark plugin |
+| `micromark-extension-substitute` | Tokenizer |
+| `mdast-util-substitute` | AST utilities |
+| `remark-substitute` | Remark plugin |
 
 For direct micromark or mdast integration, see the individual package READMEs.
 
@@ -112,11 +112,11 @@ If using both plugins, **the one registered last wins** for `:sub[...]` syntax:
 // Sub wins:
 unified()
   .use(remarkDirective)
-  .use(remarkSub)  // registered last
+  .use(remarkSubstitute)  // registered last
 
 // Directive wins:
 unified()
-  .use(remarkSub)
+  .use(remarkSubstitute)
   .use(remarkDirective)  // registered last
 ```
 

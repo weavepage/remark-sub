@@ -1,20 +1,20 @@
-# micromark-extension-sub
+# micromark-extension-substitute
 
 [micromark](https://github.com/micromark/micromark) extension for inline substitution syntax (`:sub[INITIAL]{REPLACEMENT}`).
 
-Inline substitution enables progressive disclosure — show brief content initially, reveal full content on activation. Useful for TL;DR summaries, spoilers, and interactive learning. For a complete solution, use [`remark-sub`](https://www.npmjs.com/package/remark-sub).
+Inline substitution enables progressive disclosure — show brief content initially, reveal full content on activation. Useful for TL;DR summaries, spoilers, and interactive learning. For a complete solution, use [`remark-substitute`](https://www.npmjs.com/package/remark-substitute).
 
 ## Install
 
 ```bash
-npm install micromark-extension-sub
+npm install micromark-extension-substitute
 ```
 
 ## Usage
 
 ```javascript
 import { micromark } from 'micromark'
-import { sub } from 'micromark-extension-sub'
+import { sub } from 'micromark-extension-substitute'
 
 const html = micromark(':sub[initial]{replacement}', {
   extensions: [sub()],
@@ -41,7 +41,7 @@ const html = micromark(':sub[initial]{replacement}', {
 // Output: <p><span class="sub"><span class="initial">initial</span><span class="replacement">replacement</span></span></p>
 ```
 
-**Note:** This extension only tokenizes the syntax. You must provide an `htmlExtensions` handler to render output, or use [`remark-sub`](https://www.npmjs.com/package/remark-sub) for a complete solution.
+**Note:** This extension only tokenizes the syntax. You must provide an `htmlExtensions` handler to render output, or use [`remark-substitute`](https://www.npmjs.com/package/remark-substitute) for a complete solution.
 
 ## Tokens
 

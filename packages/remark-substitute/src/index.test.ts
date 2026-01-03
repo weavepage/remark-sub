@@ -4,21 +4,21 @@ import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
 import remarkDirective from 'remark-directive'
 import remarkGfm from 'remark-gfm'
-import remarkSub from './index.js'
+import remarkSubstitute from './index.js'
 import type { Root } from 'mdast'
-import type { Sub } from 'mdast-util-sub'
+import type { Sub } from 'mdast-util-substitute'
 
 function parse(input: string): Root {
   return unified()
     .use(remarkParse)
-    .use(remarkSub)
-    .runSync(unified().use(remarkParse).use(remarkSub).parse(input)) as Root
+    .use(remarkSubstitute)
+    .runSync(unified().use(remarkParse).use(remarkSubstitute).parse(input)) as Root
 }
 
 function stringify(tree: Root): string {
   return unified()
     .use(remarkParse)
-    .use(remarkSub)
+    .use(remarkSubstitute)
     .use(remarkStringify)
     .stringify(tree)
 }
@@ -28,7 +28,7 @@ function roundtrip(input: string): string {
   return stringify(tree)
 }
 
-describe('remark-sub', () => {
+describe('remark-substitute', () => {
   describe('parsing', () => {
     it('creates sub node', () => {
       const tree = parse(':sub[x]{y}')
@@ -403,8 +403,8 @@ describe('remark-gfm compatibility', () => {
     const tree = unified()
       .use(remarkParse)
       .use(remarkGfm)
-      .use(remarkSub)
-      .runSync(unified().use(remarkParse).use(remarkGfm).use(remarkSub).parse('~~text :sub[a]{b}~~')) as Root
+      .use(remarkSubstitute)
+      .runSync(unified().use(remarkParse).use(remarkGfm).use(remarkSubstitute).parse('~~text :sub[a]{b}~~')) as Root
     
     const p = tree.children[0]
     if (p.type === 'paragraph') {
@@ -420,8 +420,8 @@ describe('remark-gfm compatibility', () => {
     const tree = unified()
       .use(remarkParse)
       .use(remarkGfm)
-      .use(remarkSub)
-      .runSync(unified().use(remarkParse).use(remarkGfm).use(remarkSub).parse(':sub[~~strike~~]{text}')) as Root
+      .use(remarkSubstitute)
+      .runSync(unified().use(remarkParse).use(remarkGfm).use(remarkSubstitute).parse(':sub[~~strike~~]{text}')) as Root
     
     const p = tree.children[0]
     if (p.type === 'paragraph') {
@@ -433,11 +433,11 @@ describe('remark-gfm compatibility', () => {
 })
 
 describe('remark-directive compatibility', () => {
-  it('parses :sub[...]{...} as sub when remarkSub is registered AFTER remarkDirective', () => {
+  it('parses :sub[...]{...} as sub when remarkSubstitute is registered AFTER remarkDirective', () => {
     const tree = unified()
       .use(remarkParse)
       .use(remarkDirective)
-      .use(remarkSub)
+      .use(remarkSubstitute)
       .parse(':sub[x]{y}') as Root
     
     const paragraph = tree.children[0]
@@ -447,10 +447,10 @@ describe('remark-directive compatibility', () => {
     }
   })
 
-  it('parses :sub[...] as textDirective when remarkDirective is registered AFTER remarkSub (partial match)', () => {
+  it('parses :sub[...] as textDirective when remarkDirective is registered AFTER remarkSubstitute (partial match)', () => {
     const tree = unified()
       .use(remarkParse)
-      .use(remarkSub)
+      .use(remarkSubstitute)
       .use(remarkDirective)
       .parse(':sub[x]{y}') as Root
     

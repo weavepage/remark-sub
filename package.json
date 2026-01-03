@@ -1,5 +1,5 @@
 {
-  "name": "remark-sub-monorepo",
+  "name": "remark-substitute-monorepo",
   "private": true,
   "type": "module",
   "workspaces": [

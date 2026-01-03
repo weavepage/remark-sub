@@ -1,7 +1,7 @@
 {
-  "name": "micromark-extension-sub",
+  "name": "mdast-util-substitute",
   "version": "1.0.0",
-  "description": "Micromark extension for inline substitution syntax (:sub[...]{...})",
+  "description": "mdast utility to parse and serialize inline substitution (:sub[...]{...})",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,24 +14,24 @@
   "files": ["dist"],
   "scripts": {
     "build": "tsc",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "echo 'Tests run via remark-substitute package'",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "micromark-util-symbol": "^2.0.0",
-    "micromark-util-types": "^2.0.0"
+    "mdast-util-from-markdown": "^2.0.0",
+    "mdast-util-to-markdown": "^2.0.0",
+    "micromark-extension-substitute": "^1.0.0"
   },
   "devDependencies": {
-    "micromark": "^4.0.0",
+    "@types/mdast": "^4.0.0",
     "typescript": "^5.7.0",
     "vitest": "^4.0.16"
   },
-  "keywords": ["micromark", "substitution", "inline", "toggle"],
+  "keywords": ["mdast", "substitution", "inline", "toggle"],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/weavepage/remark-sub.git",
-    "directory": "packages/micromark-extension-sub"
+    "directory": "packages/mdast-util-substitute"
   }
 }

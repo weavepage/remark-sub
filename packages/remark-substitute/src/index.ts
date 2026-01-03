@@ -1,8 +1,8 @@
-import { sub } from 'micromark-extension-sub'
-import { subFromMarkdown, subToMarkdown } from 'mdast-util-sub'
+import { sub } from 'micromark-extension-substitute'
+import { subFromMarkdown, subToMarkdown } from 'mdast-util-substitute'
 import type { Processor, Data } from 'unified'
 import type { Root, PhrasingContent } from 'mdast'
-import type { Sub } from 'mdast-util-sub'
+import type { Sub } from 'mdast-util-substitute'
 
 declare module 'unified' {
   interface Data {
@@ -72,4 +72,4 @@ function visitSub(tree: Root | PhrasingContent, visitor: (node: Sub) => void): v
   }
 }
 
-export type { Sub } from 'mdast-util-sub'
+export type { Sub } from 'mdast-util-substitute'
